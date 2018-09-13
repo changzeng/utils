@@ -69,3 +69,18 @@ def list_to_excel(_list, file_name):
 	writer = pd.ExcelWriter(file_name)
 	df.to_excel(writer, sheet_name="untitle_1")
 	writer.save()
+
+# flask快速建站
+from flask import Flask
+from flask import render_template
+
+app = Flask(__name__)
+@app.route('/')
+def index():
+	return "hello"
+app.run(host="127.0.0.1", port=5555, debug=True)
+
+# python文件操作
+import os
+os.listdir()
+os.path.exists()
