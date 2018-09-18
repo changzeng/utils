@@ -25,8 +25,7 @@ args = parser.parse_args()
 
 # 时间戳转日期
 def timestamp_to_timestr(timestamp):
-	timeArray = time.localtime(timestamp)
-	otherStyleTime = time.strftime("%Y--%m--%d %H:%M:%S", timeArray)
+	otherStyleTime = time.strftime("%Y--%m--%d %H:%M:%S", time.localtime(timestamp))
 	return otherStyleTime
 
 # 日期转时间戳

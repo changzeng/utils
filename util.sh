@@ -5,7 +5,7 @@ cat /proc/version
 function start_cmd(){
 	cat /proc/$1/cmdline | tr '\000' ' '
 	echo ""
-}
+}q
 
 # 查看进程的启动目录
 function cwd(){
@@ -20,3 +20,6 @@ hive -e "load data inpath '{0}' overwrite into table {1} partition (dt={2});"
 
 # hive加载hadoop文件
 hive -e "load data local inpath '{0}' overwrite into table {1} partition (dt={2});"
+
+# 查看端口占用
+netstat -natp | grep :21
