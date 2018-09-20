@@ -1,0 +1,2 @@
+# 查看某次commit的更改
+git show commit_id

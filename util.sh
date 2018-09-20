@@ -5,7 +5,7 @@ cat /proc/version
 function start_cmd(){
 	cat /proc/$1/cmdline | tr '\000' ' '
 	echo ""
-}q
+}
 
 # 查看进程的启动目录
 function cwd(){
@@ -18,8 +18,11 @@ find . -name "*.py" | xargs grep -rn --color=auto "ua_info_list"
 # hive加载hadoop文件
 hive -e "load data inpath '{0}' overwrite into table {1} partition (dt={2});"
 
-# hive加载hadoop文件
+# hive加载本地文件
 hive -e "load data local inpath '{0}' overwrite into table {1} partition (dt={2});"
 
 # 查看端口占用
 netstat -natp | grep :21
+
+# 查看第一级子目录占用磁盘的大小
+du -h --max-depth=1
