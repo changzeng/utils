@@ -24,5 +24,14 @@ hive -e "load data local inpath '{0}' overwrite into table {1} partition (dt={2}
 # 查看端口占用
 netstat -natp | grep :21
 
+# 查看磁盘余量
+df -hl
+
 # 查看第一级子目录占用磁盘的大小
 du -h --max-depth=1
+
+# watch命令后接管道
+watch -n 0.2 'cmd'
+
+# 生成文件md5值
+md5sum sour_file > dist_file

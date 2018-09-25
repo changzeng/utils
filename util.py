@@ -83,3 +83,9 @@ app.run(host="127.0.0.1", port=5555, debug=True)
 import os
 os.listdir()
 os.path.exists()
+
+# 获取当前的日期
+datetime.datetime.now().strftime("%m%d %H%M")
+
+# 日期加减N操作
+datetime.datetime.strptime("20180602", "%y%m%d") + datetime.timedelta(days=4)

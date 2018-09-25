@@ -1,2 +1,15 @@
 # 查看某次commit的更改
 git show commit_id
+
+# 版本回退
+git reset --hard commit_id
+
+# git查看所有远程分支
+git branch -r
+
+# git拉取远程分支到本地，不切换到该分支
+git checkout -b 本地分支名 origin/远程分支名
+
+# git拉取远程分支到本地，切换到该分支
+git fetch origin 远程分支名:本地分支名
+
