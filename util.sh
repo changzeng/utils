@@ -35,3 +35,6 @@ watch -n 0.2 'cmd'
 
 # 生成文件md5值
 md5sum sour_file > dist_file
+
+# 统计空行数量
+grep -e "^$" file_name | wc -l
