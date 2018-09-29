@@ -15,3 +15,16 @@ git fetch origin 远程分支名:本地分支名
 
 # 图的方式显示所有提交以及分支的历史
 git log --graph --all --color=auto
+
+# 删除一个没有打开的分支
+git branch -d <branch_name>
+
+# 删除一个远程分支
+git branch -r -d origin/branch-name
+git push origin :branch-name
+
+# git强制拉取远程分支
+git fetch --all && git reset --hard origin/master && git pull
+
+# git pull fetch区别
+git fetch只拉取合并单个分支；git pull可拉取合并不同分支

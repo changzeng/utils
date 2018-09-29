@@ -89,3 +89,29 @@ datetime.datetime.now().strftime("%m%d %H%M")
 
 # 日期加减N操作
 datetime.datetime.strptime("20180602", "%y%m%d") + datetime.timedelta(days=4)
+
+# python判断当前脚本是否正在运行
+import os
+import sys
+
+pid = str(os.getpid())
+if not os.path.exists("log"):
+	os.mkdir("log")
+pid_file = "log/pid.log"
+
+if os.path.isfile(pidfile):
+    print "%s already exists, exiting" % pidfile
+    sys.exit()
+file(pidfile, 'w').write(pid)
+try:
+    # Do some actual work here
+finally:
+    os.unlink(pidfile)
+
+# python集合操作
+# 差集
+a - b
+# 并集
+a.union(b)
+# 交集
+a.intersection(b)
