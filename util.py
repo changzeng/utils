@@ -85,10 +85,10 @@ os.listdir()
 os.path.exists()
 
 # 获取当前的日期
-datetime.datetime.now().strftime("%m%d %H%M")
+datetime.datetime.now().strftime("%Y%m%d %H%M")
 
 # 日期加减N操作
-datetime.datetime.strptime("20180602", "%y%m%d") + datetime.timedelta(days=4)
+datetime.datetime.strptime("20180602", "%Y%m%d") + datetime.timedelta(days=4)
 
 # python判断当前脚本是否正在运行
 import os
