@@ -11,9 +11,8 @@ ALTER TABLE my_partition_test_table DROP IF EXISTS PARTITION (dt='MHA');
 alter table detail_flow_test change column original_union_id original_union_id string COMMENT'原始设备唯一性标识’;
 
 # hive创建新表
-CREATE EXTERNAL TABLE `mamingyue_user_user_layer` (
- `uid` bigint COMMENT '学生id',
- `level` int COMMENT '用户等级'
+CREATE EXTERNAL TABLE `wuahoyang_system_study_all_user` (
+ `uid` bigint COMMENT '学生id'
 )
 PARTITIONED BY (`dt` string COMMENT '天级别分区字段')
 ROW FORMAT DELIMITED
@@ -23,4 +22,4 @@ STORED AS INPUTFORMAT
 OUTPUTFORMAT
  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
 LOCATION
- 'bos://zyb-offline/hive/warehouse/mamingyue_user_user_layer';
+ 'bos://zyb-offline/hive/warehouse/wuahoyang_system_study_all_user';

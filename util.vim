@@ -17,3 +17,7 @@ set	nonumber
 
 # 设置水平制表符为4空格
 set ts=4
+
+# 更改分屏大小
+:vertical res	# 垂直更改
+:res			# 水平更改

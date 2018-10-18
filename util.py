@@ -83,6 +83,7 @@ app.run(host="127.0.0.1", port=5555, debug=True)
 import os
 os.listdir()
 os.path.exists()
+os.remove()
 
 # 获取当前的日期
 datetime.datetime.now().strftime("%Y%m%d %H%M")
@@ -115,3 +116,10 @@ a - b
 a.union(b)
 # 交集
 a.intersection(b)
+
+# 判断对象是否包含某属性
+hasattr(t, "name")
+
+# pyspark统计某个字段的取值个数
+# spakr: 2.5min, awk: 5min
+sc.textFile("file_name").map(lambda x:x.split("\x01")).map(lambda x:(x[0], 1)).reduceByKey(lambda a,b:a+b).collect()

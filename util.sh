@@ -30,11 +30,17 @@ df -hl
 # 查看第一级子目录占用磁盘的大小
 du -h --max-depth=1
 
-# watch命令后接管道
+# watch查看管道命令
 watch -n 0.2 'cmd'
+
+# watch同时监控多条命令
+watch -n 0.2 'cmd1; cmd2'
 
 # 生成文件md5值
 md5sum sour_file > dist_file
 
 # 统计空行数量
 grep -e "^$" file_name | wc -l
+
+# find命令集合
+find / -size +1M -a -type f  # 查找所有大于1M的文件
