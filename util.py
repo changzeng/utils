@@ -120,6 +120,27 @@ a.intersection(b)
 # 判断对象是否包含某属性
 hasattr(t, "name")
 
+# python代码换行
+\
+
+# pyspark初始化
+from pyspark import SparkContext                                                                                                                                                                                                        
+sc = SparkContext()
+
 # pyspark统计某个字段的取值个数
 # spakr: 2.5min, awk: 5min
 sc.textFile("file_name").map(lambda x:x.split("\x01")).map(lambda x:(x[0], 1)).reduceByKey(lambda a,b:a+b).collect()
+
+# 打开excel文件
+data_sheet = pd.read_excel("compare_detail.xlsx", sheetname="Sheet1")
+
+# 显示所有列名
+data.keys()
+
+# 按行便利DataFrame
+for index, row in df.iterrows():
+	print row['c1'], row['c2']
+
+# pandas修改excel
+for index, row in data.iterrows():
+	data.loc[i, col_name] = new_value
