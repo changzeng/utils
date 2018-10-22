@@ -46,7 +46,7 @@ def get_url(url, _dict={}):
 	return requests.get(url).text
 
 # 日期递增
-def date_range(start_date, day_num):
+def date_range_num(start_date, day_num):
 	def timestr_to_timestamp(timestr):
 		# time.strptime(timestr, "%Y-%m-%d %H:%M:%S")
 		return int(time.mktime(time.strptime(timestr, "%Y%m%d")))
@@ -61,6 +61,13 @@ def date_range(start_date, day_num):
 			start_timestamp += 24*3600
 		result.append(timestamp_to_timestr(start_timestamp))
 	return result
+
+# 日期范围
+def date_range(start_date, end_date):
+	start_datetime = datetime.datetime.strptime(start_date, "%Y%m%d")
+	day_diff = (datetime.datetime.strptime(end_date, "%Y%m%d") - start_datetime).days
+	for i in range(day_diff):
+		yield (start_datetime + datetime.timedelta(days=i)).strftime("%Y%m%d")
 
 # list数据保存到excel
 def list_to_excel(_list, file_name):
@@ -90,6 +97,9 @@ datetime.datetime.now().strftime("%Y%m%d %H%M")
 
 # 日期加减N操作
 datetime.datetime.strptime("20180602", "%Y%m%d") + datetime.timedelta(days=4)
+
+# 获得今天是星期几
+datetime.datetime.now().weekday()
 
 # python判断当前脚本是否正在运行
 import os
@@ -131,6 +141,9 @@ sc = SparkContext()
 # spakr: 2.5min, awk: 5min
 sc.textFile("file_name").map(lambda x:x.split("\x01")).map(lambda x:(x[0], 1)).reduceByKey(lambda a,b:a+b).collect()
 
+# 创建RDD
+rdd = sc.parallelize(_list)
+
 # 打开excel文件
 data_sheet = pd.read_excel("compare_detail.xlsx", sheetname="Sheet1")
 
@@ -144,3 +157,10 @@ for index, row in df.iterrows():
 # pandas修改excel
 for index, row in data.iterrows():
 	data.loc[i, col_name] = new_value
+
+# 元组转为字典
+def tuple_to_dict(_tuple):
+	result = {}
+	for item in _tuple:
+		result[item[0]] = item[1]
+	return result
