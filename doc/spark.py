@@ -12,7 +12,7 @@ sc.textFile("file_name").map(lambda x:x.split("\x01")).map(lambda x:(x[0], 1)).r
 # RDD集合操作
 a.union(b)			# 并集
 a.intersection(b)	# 交集
-a.substract(b)		# 差集
+a.subtract(b)		# 差集
 
 # RDD去重
 a.distinct()
