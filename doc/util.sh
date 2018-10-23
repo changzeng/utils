@@ -77,3 +77,19 @@ DATA(数据)
     2、真正的该程序要求的数据空间，是真正在运行中要使用的。
 TIME/TIME+(时间)
 	1、进程占用CPU时间(分钟:秒.毫秒),257:14.655代表257分钟14秒655毫秒
+
+# 启动kafka
+nohup bin/zookeeper-server-start.sh config/zookeeper.properties &
+nohup bin/kafka-server-start.sh config/server.properties &
+
+# 创建topic
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+
+# 查看创建的topic
+bin/kafka-topics.sh --list --zookeeper localhost:2181
+
+# 向指定topic发送消息
+bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
+
+# 从kafka中读取数据
+bin/kafka-console-consumer.sh localhost:2181 --topic test --from-beginning
