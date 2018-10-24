@@ -150,12 +150,11 @@ for index, row in df.iterrows():
 for index, row in data.iterrows():
 	data.loc[i, col_name] = new_value
 
-# 元组转为字典
-def tuple_to_dict(_tuple):
-	result = {}
-	for item in _tuple:
-		result[item[0]] = item[1]
-	return result
-
 # format输出{}
 print "{{test}}{0}".foramt("hello")
+
+# python globals and locals and global keyword
+locals: 局部变量字典(函数参数等等)
+globals: 全部变量字典
+global: 文件的全局变量
+

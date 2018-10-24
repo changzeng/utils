@@ -24,3 +24,14 @@ Job: 每个action算子是一个job
 Task: RDD的partitions上的执行单元
 Stage: 按照宽窄依赖划分
 宽窄依赖: "https://github.com/rohgar/scala-spark-4/wiki/Wide-vs-Narrow-Dependencies"
+
+# pandas DataFrame to spark DataFrame
+from pyspark.sql import SparkSession
+spark = SparkSession\
+            .builder \
+            .appName("dataFrame") \
+            .getOrCreate()
+spark_df = spark.createDataFrame(df)
+
+# pandas DataFrame to spark rdd
+spark.createDataFrame(df).rdd
