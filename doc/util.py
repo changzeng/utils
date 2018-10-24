@@ -92,6 +92,9 @@ os.listdir()
 os.path.exists()
 os.remove()
 
+# timestamp转datetime
+datetime.datetime.fromtimestamp(t)
+
 # 获取当前的日期
 datetime.datetime.now().strftime("%Y%m%d %H%M")
 
@@ -153,3 +156,6 @@ def tuple_to_dict(_tuple):
 	for item in _tuple:
 		result[item[0]] = item[1]
 	return result
+
+# format输出{}
+print "{{test}}{0}".foramt("hello")

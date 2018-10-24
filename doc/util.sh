@@ -43,6 +43,10 @@ md5sum sour_file > dist_file
 # 统计空行数量
 grep -e "^$" file_name | wc -l
 
+# grep -e 和 -E的区别
+-e: () [] {}是普通字符串
+-E: () [] {}是模式字符串
+
 # find命令集合
 find / -size +1M -a -type f  # 查找所有大于1M的文件
 
