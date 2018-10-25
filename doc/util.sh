@@ -97,3 +97,6 @@ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
 
 # 从kafka中读取数据
 bin/kafka-console-consumer.sh localhost:2181 --topic test --from-beginning
+
+# 查看文件的90到100行
+sed -n '90,100p' test.txt
