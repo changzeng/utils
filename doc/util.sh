@@ -100,3 +100,6 @@ bin/kafka-console-consumer.sh localhost:2181 --topic test --from-beginning
 
 # 查看文件的90到100行
 sed -n '90,100p' test.txt
+
+# 反转文件
+tac a.txt > b.txt

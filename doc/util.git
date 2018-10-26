@@ -28,3 +28,12 @@ git fetch --all && git reset --hard origin/master && git pull
 
 # git pull fetch区别
 git fetch只拉取合并单个分支；git pull可拉取合并不同分支
+
+# 查看单个文件的修改历史
+git log -p file_name
+
+# 查看任意两次提交之间的差别(加stat参数只显示修改的行数)
+git diff --stat commit_id_a commit_id_b
+
+# 查看任意两个分支之间的差别(加stat参数只显示修改的行数)
+git diff branch1 branch2
