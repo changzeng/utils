@@ -35,3 +35,13 @@ spark_df = spark.createDataFrame(df)
 
 # pandas DataFrame to spark rdd
 spark.createDataFrame(df).rdd
+
+# 设置缓存级别
+from pyspark.storagelevel import StorageLevel
+StorageLevel.DISK_ONLY = StorageLevel(True, False, False, False)
+StorageLevel.DISK_ONLY_2 = StorageLevel(True, False, False, False, 2)
+StorageLevel.MEMORY_ONLY = StorageLevel(False, True, False, False)
+StorageLevel.MEMORY_ONLY_2 = StorageLevel(False, True, False, False, 2)
+StorageLevel.MEMORY_AND_DISK = StorageLevel(True, True, False, False)
+StorageLevel.MEMORY_AND_DISK_2 = StorageLevel(True, True, False, False, 2)
+StorageLevel.OFF_HEAP = StorageLevel(True, True, True, False, 1)
