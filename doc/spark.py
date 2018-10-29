@@ -45,3 +45,31 @@ StorageLevel.MEMORY_ONLY_2 = StorageLevel(False, True, False, False, 2)
 StorageLevel.MEMORY_AND_DISK = StorageLevel(True, True, False, False)
 StorageLevel.MEMORY_AND_DISK_2 = StorageLevel(True, True, False, False, 2)
 StorageLevel.OFF_HEAP = StorageLevel(True, True, True, False, 1)
+
+# spark使用随机森林
+from pyspark.mllib.tree import RandomForest, RandomForestModel
+model = RandomForest.trainClassifier(trainingData, numClasses=2, categoricalFeaturesInfo={}, numTrees=3, featureSubsetStrategy="auto", impurity='gini', maxDepth=4, maxBins=32)
+
+# spark rdd存为本地文本文件
+rdd.saveAsTextFile(file_name)
+
+# rdd采样
+rdd.take(_num)					#返回list
+rdd.takeSample(_flag, _num)		# _flag为True代表放回采样，False不放回采样，返回list
+
+# 加载样本
+from pyspark.mllib.util import MLUtils 
+samples = MLUtils.loadLibSVMFile(sc, sample_file_name) 
+
+# 样本分割
+(trainingData, testData) = samples.randomSplit([0.7, 0.3]) 
+
+# 频繁项挖掘
+from pyspark.mllib.fpm import FPGrowth
+
+data = sc.textFile("data/mllib/sample_fpgrowth.txt")
+transactions = data.map(lambda line: line.strip().split(' '))
+model = FPGrowth.train(transactions, minSupport=0.2, numPartitions=10)
+result = model.freqItemsets().collect()
+for fi in result:
+    print(fi)

@@ -136,6 +136,9 @@ hasattr(t, "name")
 # python代码换行
 \
 
+# 存为csv
+df.to_csv(csv_file_name)
+
 # 打开excel文件
 data_sheet = pd.read_excel("compare_detail.xlsx", sheetname="Sheet1")
 
@@ -158,3 +161,7 @@ locals: 局部变量字典(函数参数等等)
 globals: 全部变量字典
 global: 文件的全局变量
 
+# pandas列转化
+inv_label_mapping = {v:k for k,v in label_mapping.items()}
+data["label"] = data["label"].map(inv_label_mapping)
+print(data)
