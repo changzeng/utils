@@ -37,3 +37,6 @@ git diff --stat commit_id_a commit_id_b
 
 # 查看任意两个分支之间的差别(加stat参数只显示修改的行数)
 git diff branch1 branch2
+
+# 修改最后一次提交的注释
+git commit --amend

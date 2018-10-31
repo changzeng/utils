@@ -53,9 +53,20 @@ model = RandomForest.trainClassifier(trainingData, numClasses=2, categoricalFeat
 # spark rdd存为本地文本文件
 rdd.saveAsTextFile(file_name)
 
-# rdd采样
+# rdd获取指定数量元素转化为列表
 rdd.take(_num)					#返回list
 rdd.takeSample(_flag, _num)		# _flag为True代表放回采样，False不放回采样，返回list
+
+# 随机采样，结果仍为rdd
+rdd.sample(False, _fraction)
+
+# 获取rdd元素个数
+rdd.count()
+
+# 获取rdd的top N结果仍为rdd
+rdd.cache()
+_count = rdd.count()
+rdd.zipWithIndex().filter(lambda x:x[1]<=_count*_fraction).map(lambda x:[0])
 
 # 加载样本
 from pyspark.mllib.util import MLUtils 
@@ -73,3 +84,13 @@ model = FPGrowth.train(transactions, minSupport=0.2, numPartitions=10)
 result = model.freqItemsets().collect()
 for fi in result:
     print(fi)
+
+# rdd转map
+rdd.collectAsMap()
+
+# rdd排序
+rdd.sortByKey(ascending=False)
+rdd.sortBy(_func, ascending=False)
+
+# groupByKey注意事项
+rdd.groupByKey()	# 之后需要将rdd的第二项转为list
