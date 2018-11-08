@@ -3,10 +3,14 @@ from sklearn import tree
 clf = tree.DecisionTreeClassifier()
 clf = clf.fit(X, Y)
 
+# 逻辑回归
+from sklearn import linear_model
+model = linear_model.LogisticRegression(random_state=0, solver='lbfgs', multi_class='multinomial')
+model.fit(X, Y)
+
 # K折
 from sklearn.cross_validation import KFold
-kf = KFold(25, n_folds=5, shuffle=True)
-for _train, _test in kf:
+for _train, _test in KFold(25, n_folds=5, shuffle=True):
 	_train_samples = data[_train]
 	_test_samples = data[_test]
 

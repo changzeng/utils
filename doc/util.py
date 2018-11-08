@@ -165,3 +165,7 @@ global: 文件的全局变量
 inv_label_mapping = {v:k for k,v in label_mapping.items()}
 data["label"] = data["label"].map(inv_label_mapping)
 print(data)
+
+# 判断python版本
+import sys
+sys.version_info < (3, 0)

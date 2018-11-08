@@ -103,3 +103,6 @@ sed -n '90,100p' test.txt
 
 # 反转文件
 tac a.txt > b.txt
+
+# hive模糊匹配表名
+hive -e "show tables like '*name*';"

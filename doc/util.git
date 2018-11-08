@@ -48,3 +48,15 @@ git push -f
 2，先把git的东西fetch到你本地然后merge后再push
 git fetch
 git merge
+
+# 查看所有本地分支的HEAD位置
+git branch -vv
+
+# 查看所有远程分支的HEAD位置
+git branch -r -vv
+
+# git reset hard与soft的区别
+hard会重置本地文件，soft会将文件修改保存在缓存区中/本地文件不会修改
+
+# 将文件从缓存区中删除但保留本地文件
+git rm --cached file_name

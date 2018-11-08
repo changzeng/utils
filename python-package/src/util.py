@@ -3,6 +3,8 @@
 # author: changzeng
 # github: https://github.com/changzeng
 
+import sys
+
 # 设置utf-8编码
 def set_utf_8():
 	import sys
