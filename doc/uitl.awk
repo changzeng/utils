@@ -10,3 +10,9 @@ NR==1{
 for(ind=1;ind<=NF;ind++) 
 	print $ind,ind
 }  
+
+# 分隔字符串
+split($1, array, ",")
+
+# not in
+!(a in b)

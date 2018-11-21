@@ -153,6 +153,9 @@ for index, row in df.iterrows():
 for index, row in data.iterrows():
 	data.loc[i, col_name] = new_value
 
+# pandas dataframe 同时获取多列
+df[[col1, col2, col2]]
+
 # format输出{}
 print "{{test}}{0}".foramt("hello")
 
@@ -169,3 +172,9 @@ print(data)
 # 判断python版本
 import sys
 sys.version_info < (3, 0)
+
+# 重定向标准输出到标准输入
+with open(test_file, "w") as fd:
+	fd.write(out_str)
+with open(test_file) as fd:
+	sys.stdin = fd

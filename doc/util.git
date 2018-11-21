@@ -55,8 +55,8 @@ git branch -vv
 # 查看所有远程分支的HEAD位置
 git branch -r -vv
 
-# git reset hard与soft的区别
-hard会重置本地文件，soft会将文件修改保存在缓存区中/本地文件不会修改
+# git reset hard/soft/mix的区别
+hard会重置本地文件，soft会将文件修改保存在缓存区中/本地文件不会修改，mix不会将修改保存在缓冲区本地文件也不会复原
 
 # 将文件从缓存区中删除但保留本地文件
 git rm --cached file_name

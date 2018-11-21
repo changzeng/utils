@@ -23,3 +23,21 @@ OUTPUTFORMAT
  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
 LOCATION
  'bos://zyb-offline/hive/warehouse/live_laxin_cuid_list';
+
+# 按a排序去b字段
+SELECT *, Row_Number() OVER (partition by deptid ORDER BY salary desc) rank FROM employee;
+
+empid       deptid      salary                                  rank
+----------- ----------- --------------------------------------- --------------------
+1           10          5500.00                                 1
+2           10          4500.00                                 2
+4           20          4800.00                                 1
+3           20          1900.00                                 2
+7           40          44500.00                                1
+6           40          14500.00                                2
+5           40          6500.00                                 3
+9           50          7500.00                                 1
+8           50          6500.00                                 2
+
+# 修改字段名
+ALTER table live_laxin_act_rec_user_feature CHANGE act_id uid bigint;
