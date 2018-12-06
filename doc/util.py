@@ -10,6 +10,13 @@ import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
+# jupyter设置编码
+import sys
+stdi, stdo, stde = sys.stdin, sys.stdout, sys.stderr
+reload(sys)
+sys.setdefaultencoding('utf-8')
+sys.stdin, sys.stdout, sys.stderr = stdi, stdo, stde
+
 if __name__ == "__main__":
 	pass
 
@@ -145,7 +152,7 @@ data_sheet = pd.read_excel("compare_detail.xlsx", sheetname="Sheet1")
 # 显示所有列名
 data.keys()
 
-# 按行便利DataFrame
+# 按行遍历DataFrame
 for index, row in df.iterrows():
 	print row['c1'], row['c2']
 

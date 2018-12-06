@@ -17,6 +17,10 @@ a.subtract(b)		# 差集
 # RDD去重
 a.distinct()
 
+# rdd保存与加载
+rdd.saveAsPickleFile(file_name, partition_num)
+sc.pickleFile(file_name)
+
 # spark关键概念
 Application: 用户提交的任务
 Driver: 任务调度
@@ -94,3 +98,8 @@ rdd.sortBy(_func, ascending=False)
 
 # groupByKey注意事项
 rdd.groupByKey()	# 之后需要将rdd的第二项转为list
+
+# rdd随机分裂
+rdd.randomSplit([0.2, 0.8])
+
+# rdd to dataframe

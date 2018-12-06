@@ -1,6 +1,3 @@
-# 时间戳转日期
-from_unixtime(t1,'yyyy-MM-dd HH:mm:ss')
-
 # hive表新增字段
 alter table detail_flow_test add columns(original_union_id string);
 
@@ -41,3 +38,12 @@ empid       deptid      salary                                  rank
 
 # 修改字段名
 ALTER table live_laxin_act_rec_user_feature CHANGE act_id uid bigint;
+
+# hive插入map字段
+str_to_map("a:b,c:d")
+
+# 日期到时间戳
+unix_timestamp("{@date}", "yyyyMMdd")
+
+# 时间戳转日期
+from_unixtime(t1,'yyyy-MM-dd HH:mm:ss')
