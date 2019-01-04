@@ -35,3 +35,8 @@ def hide_toggle(for_next=False):
     )
 
     return HTML(html)
+
+# 显示html
+from IPython.core.display import display, HTML
+
+display(HTML('<h1>Hello, world!</h1>'))

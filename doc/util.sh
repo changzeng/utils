@@ -106,3 +106,6 @@ tac a.txt > b.txt
 
 # hive模糊匹配表名
 hive -e "show tables like '*name*';"
+
+# 分割文件
+split -l 2482 ../BLM/BLM.txt -d -a 4 BLM_

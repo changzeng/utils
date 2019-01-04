@@ -37,7 +37,6 @@ def timestamp_to_timestr(timestamp):
 
 # 日期转时间戳
 def timestr_to_timestamp(timestr):
-	# time.strptime(timestr, "%Y-%m-%d %H:%M:%S")
 	return int(time.mktime(time.strptime(timestr, "%Y%m%d")))
 
 # 发送post请求

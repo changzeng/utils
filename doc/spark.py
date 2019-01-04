@@ -102,4 +102,5 @@ rdd.groupByKey()	# 之后需要将rdd的第二项转为list
 # rdd随机分裂
 rdd.randomSplit([0.2, 0.8])
 
-# rdd to dataframe
+# 笛卡尔积
+c = a.cartesian(b)
