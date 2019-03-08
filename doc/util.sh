@@ -109,3 +109,14 @@ hive -e "show tables like '*name*';"
 
 # 分割文件
 split -l 2482 ../BLM/BLM.txt -d -a 4 BLM_
+
+# 排序
+sort -b -t " " -k -r -n
+
+# 合并两个文件的列(默认|t分割)
+paste file1 file2
+
+# linux免密登录
+# 1. 生成秘钥 ssh-keygen
+# 2. id_rsa.pub上传至服务器~/.ssh/authorized_keys
+# 3. 保证目标服务器.ssh目录700权限, ~/.ssh/authorized_keys 600权限

@@ -29,3 +29,10 @@ enc = preprocessing.OneHotEncoder()
 enc.fit([[0, 0, 3], [1, 1, 0], [0, 2, 1], [1, 0, 2]])
 enc.transform([[0, 1, 3]]).toarray()
 # 结果：array([[ 1.,  0.,  0.,  1.,  0.,  0.,  0.,  0.,  1.]])
+
+# KMeans聚类
+from sklearn.cluster import KMeans, MiniBatchKMeans
+# 普通KMeans聚类
+model = KMeans(n_clusters=200, random_state=666).fit(data_set)
+# miniBatch KMeans聚类
+model = MiniBatchKMeans(n_clusters=200, batch_size=batch_size, random_state=666).fit_predict(data_set)

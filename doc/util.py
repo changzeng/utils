@@ -184,3 +184,25 @@ with open(test_file, "w") as fd:
 	fd.write(out_str)
 with open(test_file) as fd:
 	sys.stdin = fd
+
+# 从任一位置引入python脚本
+import sys
+sys.path.append(package_path)
+
+# WSGI模块详解
+# TODO: 添加WSGI详解
+
+# xlrd使用方法
+import xlrd
+workbook = xlrd.open_workbook(file_path)
+workbook.sheet_names()
+sheet = workbook.sheet_by_index(sheet_index)
+sheet = workbook.sheet_by_name(sheet_name)
+sheet.row_values(3)
+sheet.col_values(3)
+sheet.cell(1, 2)
+sheet.cell_value(1, 2)
+# 表格的行数
+sheet.nrows
+# 表格的列数
+sheet.ncols
