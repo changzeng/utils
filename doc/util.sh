@@ -109,8 +109,8 @@ hive -e "show tables like '*name*';"
 
 # 分割文件
 split -l 2482 ../BLM/BLM.txt -d -a 4 BLM_
-
-# 排序
+#
+ 排序
 sort -b -t " " -k -r -n
 
 # 合并两个文件的列(默认|t分割)
@@ -120,3 +120,29 @@ paste file1 file2
 # 1. 生成秘钥 ssh-keygen
 # 2. id_rsa.pub上传至服务器~/.ssh/authorized_keys
 # 3. 保证目标服务器.ssh目录700权限, ~/.ssh/authorized_keys 600权限
+
+# 循环
+for num in 1 2 3 4 5
+do
+    echo $num
+done
+
+# 查看登录用户的用户组
+groups
+
+# 查看所有的用户组
+vi /etc/group
+
+# 为用户添加新的用户组但不改变原有主组
+usermod -a -G php-fpm rookie
+
+# 自定义prompt
+function liao_ps(){
+    idc=${HOSTNAME%%-*}
+    if [[ "$idc" == "tc" || "$idc" == "db" ]]
+    then
+        PS1='\[\e[01;31m\]\u@\[\e[01;32m\]${HOSTNAME}:\[\e[0;31m\]\W\[\e[37;36m\]\$ \[\e[00m\]'
+    else
+        PS1='\[\e[01;31m\]\u@\[\e[01;32m\]${HOSTNAME}:\[\e[0;31m\]\W\[\e[37;36m\]\$ \[\e[00m\]'
+    fi
+}
