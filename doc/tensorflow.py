@@ -34,3 +34,5 @@ tf.shape(tensor)
 # 限制使用GPU的比例
 config.gpu_options.per_process_gpu_memory_fraction = 0.9
 
+# 获得满足条件的元素索引
+tf.where(a >= 1)

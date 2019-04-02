@@ -127,6 +127,11 @@ do
     echo $num
 done
 
+for num in {1..100}
+do
+    echo $num
+done
+
 # 查看登录用户的用户组
 groups
 
@@ -146,3 +151,15 @@ function liao_ps(){
         PS1='\[\e[01;31m\]\u@\[\e[01;32m\]${HOSTNAME}:\[\e[0;31m\]\W\[\e[37;36m\]\$ \[\e[00m\]'
     fi
 }
+
+# 改变文件所有用户
+chown homework Wolfram -R
+
+# 改变用户所有组
+chgrp -R homework Wolfram
+
+# top只查看指定进程id
+top -p pid_list
+
+# tmux多屏同步操作
+:set synchronize-panes

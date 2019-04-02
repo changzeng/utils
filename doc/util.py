@@ -148,12 +148,21 @@ df.to_csv(csv_file_name)
 # 打开excel文件
 data_sheet = pd.read_excel("compare_detail.xlsx", sheetname="Sheet1")
 
+# 保存excel
+writer = pd.ExcelWriter('E:\\PythonTestCode\\public opinion_result.xlsx')
+data1.to_excel(writer, sheet_name = 'data1', index = False)
+writer.save()
+writer.close()
+
 # 显示所有列名
 data.keys()
 
 # 按行遍历DataFrame
 for index, row in df.iterrows():
 	print row['c1'], row['c2']
+
+# pandas打开excel
+df=pd.read_excel(file_name)
 
 # pandas修改excel
 for index, row in data.iterrows():
@@ -206,3 +215,42 @@ sheet.cell_value(1, 2)
 sheet.nrows
 # 表格的列数
 sheet.ncols
+
+# 求top N
+from heapq import nlargest, nsmallest
+nlargest(n, _list, key=lambda x:x)
+
+# 开启多线程
+import threading
+t = threading.Thread(target=func, args=(a, b, c))
+t.start()
+t.join()
+
+# thrift编译
+thrift --gen py hello.thrift
+
+# thrift服务模式
+# 单进程单线程...
+TServer.TSimpleServer
+# 每个请求独立的线程
+TServer.TThreadedServer
+# 线程池模型
+TServer.TThreadPoolServer
+# 每个请求独立的进程
+TServer.TForkingServer
+# 进程池方案
+TServer.TProcessPoolServer
+
+# 多线程加锁
+import threading
+mutex = threading.Lock()
+mutex.acquire()
+mutex.release()
+
+# 获得日志对象
+logger = logging.getLogger(__name__)
+logger.setLevel(level=logging.INFO)
+handler = logging.FileHandler(config["log_path"], "a")
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
