@@ -31,11 +31,11 @@ Stage: 按照宽窄依赖划分
 
 # pandas DataFrame to spark DataFrame
 from pyspark.sql import SparkSession
-spark = SparkSession\
-            .builder \
-            .appName("dataFrame") \
-            .getOrCreate()
-spark_df = spark.createDataFrame(df)
+sqlContext = SparkSession\
+				.builder \
+	            .appName("dataFrame") \
+	            .getOrCreate()
+spark_df = sqlContext.createDataFrame(df)
 
 # pandas DataFrame to spark rdd
 spark.createDataFrame(df).rdd
@@ -104,3 +104,23 @@ rdd.randomSplit([0.2, 0.8])
 
 # 笛卡尔积
 c = a.cartesian(b)
+
+# DataFrame读取csv
+df = sqlContext.read.csv(file_name, header=True)
+
+# DataFrame添加新列
+from pyspark.sql.functions import exp
+from pyspark.sql.functions import lit
+df = sqlContext.createDataFrame([(1, "a", 23.0), (3, "B", -23.0)], ("x1", "x2", "x3"))
+df_with_x4 = df.withColumn("x4", lit(0))
+df_with_x5 = df_with_x4.withColumn("x5", exp("x3"))
+
+# DataFrame保存为csv
+df.write.csv(file_name)
+
+# pyspark自定义udf
+from pyspark.sql.functions import udf
+from pyspark.sql.types import StringType
+maturity_udf = udf(lambda age: "adult" if age >=18 else "child", StringType())
+df = sqlContext.createDataFrame([{'name': 'Alice', 'age': 1}])
+df.withColumn("maturity", maturity_udf(df.age))

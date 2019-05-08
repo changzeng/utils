@@ -163,3 +163,9 @@ top -p pid_list
 
 # tmux多屏同步操作
 :set synchronize-panes
+
+# nginx启动
+/noah/modules/e871e77587ecf365947c55c2fa44274c/nginx/sbin/bns_nginx -p /noah/modules/e871e77587ecf365947c55c2fa44274c/nginx-c /noah/modules/e871e77587ecf365947c55c2fa44274c/nginx/conf/nginx.conf
+
+# 下载包的依赖包
+yum install --downloadonly --downloaddir=/root/package/nano nano
